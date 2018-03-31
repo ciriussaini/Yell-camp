@@ -1,0 +1,54 @@
+body{
+    background-color: #000;
+}
+h1 {
+  font-weight: 700;
+  font-size: 5em;
+}
+.content{
+  color:white;
+  position: relative;
+  z-index: 1;
+  padding-top: 20%;
+  text-align: center;
+}
+
+.content h1, .content h3{
+    z-index: 1;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                 0px 8px 13px rgba(0,0,0,0.1),
+                 0px 18px 23px rgba(0,0,0,0.1);
+}
+hr {
+    z-index: 1;
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.container{
+    z-index: 1;
+}
+
+.slideshow{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 0;
+}
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
