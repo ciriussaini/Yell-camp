@@ -10,7 +10,7 @@ for(var i=0;i<imgs.length;i++)
  $("ul li").eq(i).css("background-image", imgs[i]);   
 }
 test();
-function test() {
+function test(){
     $("li").each(function(index) {
         
         $(this).delay(3000 * index).fadeIn(3000).fadeOut(2000);

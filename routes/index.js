@@ -21,7 +21,7 @@ router.post("/register",function(req,res){
             return res.render("register");
         }
         passport.authenticate("local")(req, res, function(){
-          req.flash("success","Welcome to Yellcamp"+user.username );
+           req.flash("success","Successfully Signed Up! Nice to meet you  "+user.username );
            res.redirect("/campgrounds"); 
         });
     });
@@ -32,13 +32,18 @@ router.get("/login", function(req, res){
    res.render("login"); 
 });
 // handling login logic
-router.post("/login", passport.authenticate("local", 
+router.post("/login", function(req, res){
+   passport.authenticate("local")(req,res,function(){
+     res.redirect("/campgrounds"); 
+   });
+   req.flash("error","Username or password is wrong! Try Again");
+   res.redirect("/login"); 
+});
+ /*passport.authenticate("local", 
     {
-
         successRedirect: "/campgrounds",
         failureRedirect: "/login"
-    }), function(req, res){
-});
+    })*/
 
 // logout route
 router.get("/logout", function(req, res){

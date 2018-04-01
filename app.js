@@ -4,24 +4,26 @@
 //Slideshow
 // github.com/nax3t/background-slider
 
-var express    = require("express"),
-    app        = express(),
-    bodyParser = require("body-parser"),
-    mongoose   = require("mongoose"),
-    Campground = require("./models/campground"),
-    passport   = require("passport"),
-    flash       = require("connect-flash"),
+var express      = require("express"),
+    app          = express(),
+    methodOverride = require("method-override"),
+    bodyParser   = require("body-parser"),
+    mongoose     = require("mongoose"),
+    Campground   = require("./models/campground"),
+    passport     = require("passport"),
+    flash        = require("connect-flash"),
     LocalStrategy= require("passport-local"),
-    seedDB     = require("./seeds"),
-    Comment    = require("./models/comment");
-    User       = require("./models/user");
+    seedDB       = require("./seeds"),
+    Comment      = require("./models/comment");
+    User         = require("./models/user");
 
 //requring routes
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campground"),
     indexRoutes      = require("./routes/index");
 //seedDB();//Seed the database
-mongoose.connect("mongodb://localhost/yell_camp_v12");
+mongoose.connect("mongodb://localhost/yell_camp_v13");
+app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs")
 app.use(express.static(__dirname + "/public"));
