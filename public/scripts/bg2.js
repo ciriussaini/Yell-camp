@@ -12,10 +12,10 @@ for(var i=0;i<imgs.length;i++)
 test();
 function test(){
     $("li").each(function(index) {
-        $(this).delay(6000 * index).fadeIn(3800).fadeOut(4000);
+        $(this).delay(6000 * index).fadeIn(3800).fadeOut(3900);
         $("li").hide();
     });
 }
-setInterval(test,30200);
+setInterval(test,30300);
 
 

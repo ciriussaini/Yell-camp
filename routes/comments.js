@@ -4,6 +4,12 @@ var Campground = require("../models/campground");
 var Comment = require("../models/comment");
 var middleware = require("../middleware/index.js");
 
+var getDate = function(){
+  var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  date = new Date,  day = date.getDate(), month = monthNames[ date.getMonth() ], year = date.getFullYear();
+  return day+"-"+month+"-"+year;
+  
+};
 router.get("/new", middleware.isLoggedIn ,function(req,res){
 	//find campground by id
 	Campground.findById(req.params.id,function(err,campground){
@@ -41,6 +47,7 @@ router.post("/", middleware.isLoggedIn , function(req,res){
 					//Add username and id to comment
 					comment.author.id = req.user._id;
 					comment.author.username = req.user.username;
+					comment.date = getDate();					
 					//save comment
 					comment.save();
 					campground.comments.push(comment);
@@ -92,6 +99,7 @@ router.delete("/:comment_id",middleware.checkCommentOwnership,function(req,res){
 		else
 		{
 			req.flash("success","Comment Deleted");
+			saveAverageRating(req,res);
 			res.redirect("/campgrounds/"+ req.params.id );
 		}
 	});
